@@ -1,0 +1,19 @@
+.profile__case {
+    max-height: 75px;
+    max-width: 350px;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    column-gap: 0;
+    row-gap: 7px;
+}
+
+@media screen and (max-width: 320px) {
+    .profile__case {
+        padding-top: 10px;
+        column-gap: 10px;
+        row-gap: 10px;
+        padding-left: 30px;
+    }
+}

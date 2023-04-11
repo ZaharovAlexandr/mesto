@@ -1,0 +1,15 @@
+.popup__case {
+    display: flex;
+    flex-direction: column;
+    min-width: 358px;
+    padding-bottom: 20px;
+    row-gap: 15px;
+}
+
+@media screen and (max-width: 320px) {
+    .popup__case {
+        max-width: 282px;
+        padding: 0;
+        align-items: center;
+    }
+}

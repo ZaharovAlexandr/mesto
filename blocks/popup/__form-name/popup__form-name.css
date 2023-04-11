@@ -1,0 +1,21 @@
+.popup__form-name {
+    margin: 0;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 8px;
+    outline: none;
+}
+.popup__form-name::placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+}
+
+@media screen and (max-width: 320px) {
+    .popup__form-name {
+        min-width: 238px;
+    }
+}
