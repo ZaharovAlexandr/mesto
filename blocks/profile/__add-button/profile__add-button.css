@@ -1,5 +1,6 @@
 .profile__add-button{
     max-width: 150px;
+    min-height: 50px;
 }
 
 .profile__add-button:hover {
