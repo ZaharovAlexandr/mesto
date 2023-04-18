@@ -1,6 +1,7 @@
 .card__case {
     margin: 0 auto 0;
     min-width: 240px;
+    min-height: 79px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

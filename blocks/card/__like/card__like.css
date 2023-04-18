@@ -1,5 +1,9 @@
 .card__like {
     max-width: 22px;
+    background-color: #fff;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 }
 .card__like:hover {
     opacity: 0.5;

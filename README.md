@@ -23,3 +23,7 @@
 ## Ссылка на макет в Figma
 
 * [Макет](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0-1&t=bPvk2mWpjhF8XiWD-0)
+
+## Ссылка на GitHub Pages
+
+* [Ссылка](https://zaharovalexandr.github.io/mesto/)
