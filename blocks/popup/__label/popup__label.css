@@ -9,7 +9,7 @@
     min-width: 358px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 554px) {
     .popup__label {
         max-width: 238px;
         font-size: 18px;

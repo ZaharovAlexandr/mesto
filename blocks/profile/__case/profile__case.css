@@ -5,7 +5,7 @@
     grid-template-rows: auto auto;
     align-items: center;
     row-gap: 8px;
-    column-gap: 3px;
+    column-gap: 0px;
 }
 
 @media screen and (max-width: 320px) {
