@@ -1,0 +1,21 @@
+.full-size-card__close-button {
+    background-image: url('../../../images/Close-Icon.svg');
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    width: 32px;
+    height: 32px;
+    right: -35px;
+    top: -35px;
+}
+
+@media screen and (max-width: 360px) {
+    .full-size-card__close-button {
+        width: 20px;
+        height: 20px;
+        right: 0px;
+        top: -35px;
+    }
+}

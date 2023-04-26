@@ -5,7 +5,6 @@
     padding-bottom: 67px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
     row-gap: 21px;
     column-gap: 17px;
 }

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
 </head>
+
 <body class="pages">
     <header class="header">
         <img class="header__logo" src="./images/Logo.svg" alt="Логотип">
@@ -23,48 +24,16 @@
             <button class="profile__add-button" type="button"></button>
         </section>
         <section class="cards">
-            <article class="card">
-                <img class="card__image" src="./images/cards_photo1.jpg" alt="фотография">
-                <div class="card__case">
-                    <h2 class="card__title">Карачаевск</h2>
-                    <button class="card__like" type="button"></button>
+            <template id="card">
+                <div class="card">
+                    <button class="card__remove" type="button"></button>
+                    <img class="card__image" alt="фотография">
+                    <div class="card__case">
+                        <h2 class="card__title"></h2>
+                        <button class="card__like" type="button"></button>
+                    </div>
                 </div>
-            </article>
-            <article class="card">
-                <img class="card__image" src="./images/cards_photo2.jpg" alt="фотография">
-                <div class="card__case">
-                    <h2 class="card__title">Гора Эльбрус</h2>
-                    <button class="card__like" type="button"></button>
-                </div>
-            </article>
-            <article class="card">
-                <img class="card__image" src="./images/cards_photo3.jpg" alt="фотография">
-                <div class="card__case">
-                    <h2 class="card__title">Домбай</h2>
-                    <button class="card__like" type="button"></button>
-                </div>
-            </article>
-            <article class="card">
-                <img class="card__image" src="./images/cards_photo4.jpg" alt="фотография">
-                <div class="card__case">
-                    <h2 class="card__title">Гора Эльбрус</h2>
-                    <button class="card__like" type="button"></button>
-                </div>
-            </article>
-            <article class="card">
-                <img class="card__image" src="./images/cards_photo5.jpg" alt="фотография">
-                <div class="card__case">
-                    <h2 class="card__title">Домбай</h2>
-                    <button class="card__like" type="button"></button>
-                </div>
-            </article>
-            <article class="card">
-                <img class="card__image" src="./images/cards_photo6.jpg" alt="фотография">
-                <div class="card__case">
-                    <h2 class="card__title">Карачаево-Черкесия</h2>
-                    <button class="card__like" type="button"></button>
-                </div>
-            </article>
+            </template>
         </section>
     </main>
     <footer class="footer">
@@ -76,11 +45,35 @@
             <button class="popup__close-button" type="button"></button>
             <form action="#" class="popup__case" name="popup">
                 <label for="name"></label>
-                <input class="popup__text-field popup__text-field_type_name" type="text" name="name" id="name" placeholder="Имя" required>
+                <input class="popup__text-field popup__text-field_type_name" type="text" name="name" id="name"
+                    placeholder="Имя" required>
                 <label for="job"></label>
-                <input class="popup__text-field popup__text-field_type_job" type="text" name="job" id="job" placeholder="Работа" required>
+                <input class="popup__text-field popup__text-field_type_job" type="text" name="job" id="job"
+                    placeholder="Работа" required>
                 <button type="submit" class="popup__submit-button">Сохранить</button>
             </form>
+        </div>
+    </div>
+    <div class="popup-card">
+        <div class="popup-card__container">
+            <h2 class="popup-card__label">Новое место</h2>
+            <button class="popup-card__close-button" type="button"></button>
+            <form action="#" class="popup-card__case" name="popup">
+                <label for="name"></label>
+                <input class="popup-card__text-field popup-card__text-field_type_name" type="text" name="name" id="name"
+                    placeholder="Название" required>
+                <label for="url"></label>
+                <input class="popup-card__text-field popup-card__text-field_type_url" type="text" name="url" id="url"
+                    placeholder="Ссылка на картинку" required>
+                <button type="submit" class="popup-card__submit-button">Создать</button>
+            </form>
+        </div>
+    </div>
+    <div class="full-size-card">
+        <div class="full-size-card__case">
+            <button class="full-size-card__close-button" type="button"></button>
+            <img class="full-size-card__image" src="#" alt="фотография">
+            <p class="full-size-card__text"></p>
         </div>
     </div>
     <script src="./script/index.js"></script>

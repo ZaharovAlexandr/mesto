@@ -1,0 +1,19 @@
+.popup-card__label {
+    padding-top: 34px;
+    font-family: "Inter", sans-serif, serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 0;
+    min-width: 358px;
+}
+
+@media screen and (max-width: 554px) {
+    .popup-card__label {
+        max-width: 238px;
+        font-size: 18px;
+        line-height: 22px;
+        padding-top: 25px;
+    }
+}

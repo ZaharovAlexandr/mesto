@@ -1,0 +1,10 @@
+.card__remove {
+    position: absolute;
+    width: 18px;
+    height: 19px;
+    background-color: transparent;
+    border: none;
+    right: 19px;
+    top: 20px;
+    background-image: url('../../../images/Trash.svg');
+}
