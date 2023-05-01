@@ -2,7 +2,8 @@
     border-radius: 10px;
     position: relative;
     text-align: left;
-    width: 430px;
+    min-width: 430px;
+    max-width: 430px;
     background-color: white;
     min-height: 330px;
     display: flex;

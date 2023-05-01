@@ -47,7 +47,7 @@ function createCard(url, name) { //функция создания карточ�
     return cardElement;
 }
 
-function CardAddForm(evt) { // Функция добавления карточки на страницу
+function cardAddForm(evt) { // Функция добавления карточки на страницу
     evt.preventDefault();
     url = popupAddCardUrl.value;
     cardName = popupAddCardName.value;
@@ -65,12 +65,12 @@ for (let i = 0; i < initialCards.length; i++) { //Цикл изначально�
     cardsArea.prepend(newCard);
 }
 
-function openPopup(i) { //Функция открытия Попапа
-    i.classList.add('popup_opened');
+function openPopup(popupName) { //Функция открытия Попапа
+    popupName.classList.add('popup_opened');
 }
 
-function closePopup(i) { //Функция закрытия Попапа
-    i.classList.remove('popup_opened');
+function closePopup(popupName) { //Функция закрытия Попапа
+    popupName.classList.remove('popup_opened');
 }
 
 function openPopupEditProfile() { //Функция открытия Попапа редактирования профиля
@@ -90,7 +90,7 @@ function handleProfileFormSubmit(evt) { // Функция отправки фо�
 
 popupEditProfileFormElement.addEventListener('submit', handleProfileFormSubmit); //Слушатель для редактирования профиля
 
-popupAddCardFormElement.addEventListener('submit', CardAddForm); //Слушатель для добавления карточки
+popupAddCardFormElement.addEventListener('submit', cardAddForm); //Слушатель для добавления карточки
 
 //Обработчики попапа
 profileButtonEdit.addEventListener('click', openPopupEditProfile)
