@@ -7,4 +7,5 @@
     right: 19px;
     top: 20px;
     background-image: url('../../../images/Trash.svg');
+    background-size: contain;
 }

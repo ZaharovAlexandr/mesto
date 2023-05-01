@@ -39,43 +39,41 @@
     <footer class="footer">
         <p class="footer__text">© 2023 Mesto Russia</p>
     </footer>
-    <div class="popup">
-        <div class="popup__container">
-            <h2 class="popup__label">Редактировать профиль</h2>
-            <button class="popup__close-button" type="button"></button>
-            <form action="#" class="popup__case" name="popup">
-                <label for="name"></label>
+    <div class="popup popup_type_edit-profile">
+        <div class="popup__container popup__container_type_edit-profile">
+            <h2 class="popup__label popup__label_type_edit-profile">Редактировать профиль</h2>
+            <button class="popup__close-button popup__close-button_type_edit-profile" type="button"></button>
+            <form action="#" class="popup__case popup__case_type_edit-profile" name="popup">
                 <input class="popup__text-field popup__text-field_type_name" type="text" name="name" id="name"
                     placeholder="Имя" required>
-                <label for="job"></label>
                 <input class="popup__text-field popup__text-field_type_job" type="text" name="job" id="job"
                     placeholder="Работа" required>
-                <button type="submit" class="popup__submit-button">Сохранить</button>
+                <button type="submit"
+                    class="popup__submit-button popup__submit-button_type_edit-profile">Сохранить</button>
             </form>
         </div>
     </div>
-    <div class="popup-card">
-        <div class="popup-card__container">
-            <h2 class="popup-card__label">Новое место</h2>
-            <button class="popup-card__close-button" type="button"></button>
-            <form action="#" class="popup-card__case" name="popup">
-                <label for="card-name"></label>
-                <input class="popup-card__text-field popup-card__text-field_type_name" type="text" name="card-name" id="card-name"
-                    placeholder="Название" required>
-                <label for="url"></label>
-                <input class="popup-card__text-field popup-card__text-field_type_url" type="text" name="url" id="url"
+    <div class="popup popup_type_add-card">
+        <div class="popup__container popup__container_type_add-card">
+            <h2 class="popup__label popup__label_type_add-card">Новое место</h2>
+            <button class="popup__close-button popup__close-button_type_add-card" type="button"></button>
+            <form action="#" class="popup__case popup__case_type_add-card" name="popup">
+                <input class="popup__text-field popup__text-field_type_card-name" type="text" placeholder="Название"
+                    required>
+                <input class="popup__text-field popup__text-field_type_card-url" type="text"
                     placeholder="Ссылка на картинку" required>
-                <button type="submit" class="popup-card__submit-button">Создать</button>
+                <button type="submit" class="popup__submit-button popup__submit-button_type_add-card">Создать</button>
             </form>
         </div>
     </div>
-    <div class="full-size-card">
-        <div class="full-size-card__case">
-            <button class="full-size-card__close-button" type="button"></button>
-            <img class="full-size-card__image" src="#" alt="фотография">
-            <p class="full-size-card__text"></p>
+    <div class="popup popup_type_full-size-card">
+        <div class="popup__full-size-card-container">
+            <button class="popup__close-button popup__close-button_type_full-size-card" type="button"></button>
+            <img class="popup__full-size-card" src="#" alt="фотография">
+            <p class="popup__paragraph"></p>
         </div>
     </div>
+    <script src="./script/constants.js"></script>
     <script src="./script/index.js"></script>
 </body>
 

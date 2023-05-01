@@ -1,8 +1,0 @@
-.full-size-card__case {
-    max-width: 75%;
-    max-height: 75%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
-}

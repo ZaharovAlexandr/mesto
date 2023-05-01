@@ -4,7 +4,6 @@
     max-width: 282px;
     background-color: white;
     display: grid;
-    grid-column: auto auto;
     grid-template-rows: 3fr auto;
     border-radius: 10px;
 }
