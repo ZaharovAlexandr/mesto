@@ -93,9 +93,7 @@ popupEditProfileFormElement.addEventListener('submit', handleProfileFormSubmit);
 popupAddCardFormElement.addEventListener('submit', CardAddForm); //Слушатель для добавления карточки
 
 //Обработчики попапа
-profileButtonEdit.addEventListener('click', function () { // Слушатель закрытия попапа редактирования профиля
-    openPopup(popupEditProfile);
-});
+profileButtonEdit.addEventListener('click', openPopupEditProfile)
 
 popupEditProfileButtonClose.addEventListener('click', function () { // Слушатель закрытия попапа редактирования профиля
     closePopup(popupEditProfile);
