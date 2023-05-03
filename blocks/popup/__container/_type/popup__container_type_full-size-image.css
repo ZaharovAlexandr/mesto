@@ -1,0 +1,23 @@
+.popup__container_type_full-size-image {
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    min-width: none;
+    max-width: 75%;
+    max-height: 75%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: start;
+    text-align: left;
+}
+
+@media screen and (max-width: 554px) {
+    .popup__container {
+        max-width: 75%;
+        max-height: 75%;
+        text-align: left;
+        row-gap: 10px;
+    }
+}
