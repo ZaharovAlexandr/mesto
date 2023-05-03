@@ -8,4 +8,5 @@
     top: 20px;
     background-image: url('../../../images/Trash.svg');
     background-size: contain;
+    background-repeat: no-repeat;
 }
