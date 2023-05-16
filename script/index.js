@@ -88,12 +88,18 @@ function handleProfileFormSubmit(evt) { // Функция отправки фо�
     closePopup(popupEditProfile);
 }
 
+document.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+        openedPopup = document.querySelector('.popup_opened')
+        openedPopup.classList.remove('popup_opened')
+    };
+});
+
 popupEditProfileFormElement.addEventListener('submit', handleProfileFormSubmit); //Слушатель для редактирования профиля
 
 popupAddCardFormElement.addEventListener('submit', cardAddForm); //Слушатель для добавления карточки
 
-//Обработчики попапа
-profileButtonEdit.addEventListener('click', openPopupEditProfile)
+profileButtonEdit.addEventListener('click', openPopupEditProfile) //Обработчики попапа
 
 popupEditProfileButtonClose.addEventListener('click', function () { // Слушатель закрытия попапа редактирования профиля
     closePopup(popupEditProfile);
@@ -110,3 +116,22 @@ popupAddCardСloseButton.addEventListener('click', function () { // Слушат
 fullSizeCardCloseButton.addEventListener('click', function () { // Слушатель закрытия попапа добавления карточки
     closePopup(fullSizeCard);
 });
+
+popupEditProfile.addEventListener('click', (evt) => { // Слушатель закрытия попапа редактирования профиля нажатием на оверлей
+    if (evt.currentTarget === evt.target) {
+        closePopup(popupEditProfile)
+    }
+});
+
+popupAddCard.addEventListener('click', (evt) => { // Слушатель закрытия попапа добавления карточки нажатием на оверлей
+    if (evt.currentTarget === evt.target) {
+        closePopup(popupAddCard)
+    }
+});
+
+
+
+
+
+
+
