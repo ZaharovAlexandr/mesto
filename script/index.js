@@ -27,9 +27,9 @@ const fullSizeCardCloseButton = fullSizeCard.querySelector('.popup__close-button
 
 // элемент секции с карточками
 const cardsArea = document.querySelector('.cards');
+const cardTemplate = document.querySelector('#card').content;
 
 function createCard(url, name) { //функция создания карточки
-    const cardTemplate = document.querySelector('#card').content;
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
     cardElement.querySelector('.card__image').src = url;
     cardElement.querySelector('.card__title').textContent = name;
@@ -56,6 +56,7 @@ function cardAddForm(evt) { // Функция добавления карточ�
     popupAddCardName.value = '';
     popupAddCardUrl.value = '';
     closePopup(popupAddCard);
+    enableValidation(configFormSelector);
 }
 
 for (let i = 0; i < initialCards.length; i++) { //Цикл изначального добавления карточек на страницу
@@ -67,10 +68,12 @@ for (let i = 0; i < initialCards.length; i++) { //Цикл изначально�
 
 function openPopup(popupName) { //Функция открытия Попапа
     popupName.classList.add('popup_opened');
+    escListnerAdd();
 }
 
 function closePopup(popupName) { //Функция закрытия Попапа
     popupName.classList.remove('popup_opened');
+    escListnerRemove();
 }
 
 function openPopupEditProfile() { //Функция открытия Попапа редактирования профиля
@@ -88,12 +91,21 @@ function handleProfileFormSubmit(evt) { // Функция отправки фо�
     closePopup(popupEditProfile);
 }
 
-document.addEventListener('keydown', function (evt) {
+function escListnerAdd() { // Функция добавления слушателя на закрытие попапа на кнопку 'ESC'
+    document.addEventListener('keydown', adddd);
+}
+
+function adddd(evt) { // Функция которая отслеживает нажатие на кнопку 'ESC'
     if (evt.key === 'Escape') {
         openedPopup = document.querySelector('.popup_opened')
         openedPopup.classList.remove('popup_opened')
     };
-});
+}
+
+function escListnerRemove() { // Функция добавления слушателя на закрытие попапа на кнопку 'ESC'
+    console.log('hello');
+    document.removeEventListener('keydown', adddd);
+}
 
 popupEditProfileFormElement.addEventListener('submit', handleProfileFormSubmit); //Слушатель для редактирования профиля
 
@@ -119,15 +131,23 @@ fullSizeCardCloseButton.addEventListener('click', function () { // Слушат�
 
 popupEditProfile.addEventListener('click', (evt) => { // Слушатель закрытия попапа редактирования профиля нажатием на оверлей
     if (evt.currentTarget === evt.target) {
-        closePopup(popupEditProfile)
+        closePopup(popupEditProfile);
     }
 });
 
 popupAddCard.addEventListener('click', (evt) => { // Слушатель закрытия попапа добавления карточки нажатием на оверлей
     if (evt.currentTarget === evt.target) {
-        closePopup(popupAddCard)
+        closePopup(popupAddCard);
     }
 });
+
+fullSizeCard.addEventListener('click', (evt) => { // Слушатель закрытия попапа добавления карточки нажатием на оверлей
+    if (evt.currentTarget === evt.target) {
+        closePopup(fullSizeCard);
+    }
+});
+
+
 
 
 

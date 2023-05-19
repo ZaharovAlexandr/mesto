@@ -11,9 +11,11 @@
 
 @media screen and (max-width: 554px) {
     .popup__label {
-        max-width: 238px;
+        min-width: 242px;
+        max-width: 242px;
         font-size: 18px;
         line-height: 22px;
         padding-top: 25px;
+        padding-bottom: 25px;
     }
 }

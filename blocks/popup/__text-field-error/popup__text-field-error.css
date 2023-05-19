@@ -6,4 +6,12 @@
     font-size: 12px;
     line-height: 15px;
     color: #FF0000;
+    max-width: 358px;
+}
+
+@media screen and (max-width: 554px) {
+    .popup__text-field-error {
+        min-width: 238px;
+        max-width: 239px;
+    }
 }
