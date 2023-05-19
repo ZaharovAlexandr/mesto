@@ -8,7 +8,7 @@
     column-gap: 0px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 540px) {
     .profile__case {
         padding-top: 10px;
         column-gap: 10px;

@@ -32,6 +32,7 @@ const cardTemplate = document.querySelector('#card').content;
 function createCard(url, name) { //функция создания карточки
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
     cardElement.querySelector('.card__image').src = url;
+    cardElement.querySelector('.card__image').alt = 'Картинка';
     cardElement.querySelector('.card__title').textContent = name;
     cardElement.querySelector('.card__like').addEventListener('click', function (evt) {
         evt.target.classList.toggle('card__like_active');
@@ -42,6 +43,7 @@ function createCard(url, name) { //функция создания карточ�
     cardElement.querySelector('.card__image').addEventListener('click', function (evt) {
         openPopup(fullSizeCard);
         fullSizeCardImage.setAttribute('src', url);
+        fullSizeCardImage.setAttribute('alt', "Картинка");
         fullSizeCardText.textContent = name;
     })
     return cardElement;
