@@ -49,8 +49,10 @@ const hasInvalidInput = (inputList) => { //Проверка на валидно�
 const toggleButtonState = (inputList, buttonElement, config) => { // Функция смены кнопки
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.add(config.inactiveButtonClass);
+        buttonElement.setAttribute('disabled', '');
     } else {
         buttonElement.classList.remove(config.inactiveButtonClass);
+        buttonElement.removeAttribute('disabled');
     }
 };
 

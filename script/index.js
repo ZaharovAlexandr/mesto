@@ -18,6 +18,7 @@ const popupAddCardСloseButton = popupAddCard.querySelector('.popup__close-butto
 const popupAddCardName = popupAddCard.querySelector('.popup__text-field_type_card-name');
 const popupAddCardUrl = popupAddCard.querySelector('.popup__text-field_type_card-url');
 const popupAddCardFormElement = popupAddCard.querySelector('.popup__case_type_add-card');
+const popopAddCardSubmitButton = popupAddCard.querySelector('.popup__submit-button_type_add-card');
 
 // элементы секции fullSizeCard
 const fullSizeCard = document.querySelector('.popup_type_full-size-card');
@@ -32,7 +33,7 @@ const cardTemplate = document.querySelector('#card').content;
 function createCard(url, name) { //функция создания карточки
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
     cardElement.querySelector('.card__image').src = url;
-    cardElement.querySelector('.card__image').alt = 'Картинка';
+    cardElement.querySelector('.card__image').alt = name;
     cardElement.querySelector('.card__title').textContent = name;
     cardElement.querySelector('.card__like').addEventListener('click', function (evt) {
         evt.target.classList.toggle('card__like_active');
@@ -43,7 +44,7 @@ function createCard(url, name) { //функция создания карточ�
     cardElement.querySelector('.card__image').addEventListener('click', function (evt) {
         openPopup(fullSizeCard);
         fullSizeCardImage.setAttribute('src', url);
-        fullSizeCardImage.setAttribute('alt', "Картинка");
+        fullSizeCardImage.setAttribute('alt', name);
         fullSizeCardText.textContent = name;
     })
     return cardElement;
@@ -57,8 +58,9 @@ function cardAddForm(evt) { // Функция добавления карточ�
     cardsArea.prepend(newCard);
     popupAddCardName.value = '';
     popupAddCardUrl.value = '';
+    popopAddCardSubmitButton.setAttribute('disabled', '');
+    popopAddCardSubmitButton.classList.add('popup__submit-button_type_disable');
     closePopup(popupAddCard);
-    enableValidation(configFormSelector);
 }
 
 for (let i = 0; i < initialCards.length; i++) { //Цикл изначального добавления карточек на страницу
@@ -70,12 +72,12 @@ for (let i = 0; i < initialCards.length; i++) { //Цикл изначально�
 
 function openPopup(popupName) { //Функция открытия Попапа
     popupName.classList.add('popup_opened');
-    escListnerAdd();
+    addEscListner();
 }
 
 function closePopup(popupName) { //Функция закрытия Попапа
     popupName.classList.remove('popup_opened');
-    escListnerRemove();
+    removeEscListner();
 }
 
 function openPopupEditProfile() { //Функция открытия Попапа редактирования профиля
@@ -93,20 +95,20 @@ function handleProfileFormSubmit(evt) { // Функция отправки фо�
     closePopup(popupEditProfile);
 }
 
-function escListnerAdd() { // Функция добавления слушателя на закрытие попапа на кнопку 'ESC'
-    document.addEventListener('keydown', adddd);
+function addEscListner() { // Функция добавления слушателя на закрытие попапа на кнопку 'ESC' //addEscListner
+    document.addEventListener('keydown', createListnerEsc);
 }
 
-function adddd(evt) { // Функция которая отслеживает нажатие на кнопку 'ESC'
+function createListnerEsc(evt) { // Функция которая отслеживает нажатие на кнопку 'ESC'
     if (evt.key === 'Escape') {
-        openedPopup = document.querySelector('.popup_opened')
-        openedPopup.classList.remove('popup_opened')
+        openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
     };
 }
 
-function escListnerRemove() { // Функция добавления слушателя на закрытие попапа на кнопку 'ESC'
+function removeEscListner() { // Функция добавления слушателя на закрытие попапа на кнопку 'ESC' removeEscListner
     console.log('hello');
-    document.removeEventListener('keydown', adddd);
+    document.removeEventListener('keydown', createListnerEsc);
 }
 
 popupEditProfileFormElement.addEventListener('submit', handleProfileFormSubmit); //Слушатель для редактирования профиля
