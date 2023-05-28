@@ -1,3 +1,5 @@
+export {initialCards, configFormSelector}
+
 const initialCards = [ //Массив с изначальными карточками
     {
         name: 'Архыз',
@@ -24,3 +26,11 @@ const initialCards = [ //Массив с изначальными карточк
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
+const configFormSelector = { //Массив с классами формы для их валидации
+    inputSelector: '.popup__text-field',
+    submitButtonSelector: '.popup__submit-button',
+    inactiveButtonClass: 'popup__submit-button_type_disable',
+    inputErrorClass: 'popup__text-field_type_error',
+    errorClass: 'popup__text-field-error_type_enable'
+}

@@ -1,3 +1,7 @@
+import { initialCards, configFormSelector } from "./constants.js";
+import { FormValidator } from "./FormValidator.js";
+import { Card } from "./Card.js";
+
 // элементы секции profile:
 const profile = document.querySelector('.profile');
 const profileButtonEdit = profile.querySelector('.profile__edit-button');
@@ -30,32 +34,23 @@ const fullSizeCardCloseButton = fullSizeCard.querySelector('.popup__close-button
 const cardsArea = document.querySelector('.cards');
 const cardTemplate = document.querySelector('#card').content;
 
-function createCard(url, name) { //функция создания карточки
-    const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-    cardElement.querySelector('.card__image').src = url;
-    cardElement.querySelector('.card__image').alt = name;
-    cardElement.querySelector('.card__title').textContent = name;
-    cardElement.querySelector('.card__like').addEventListener('click', function (evt) {
-        evt.target.classList.toggle('card__like_active');
-    })
-    cardElement.querySelector('.card__remove').addEventListener('click', function (evt) {
-        cardElement.remove()
-    })
-    cardElement.querySelector('.card__image').addEventListener('click', function (evt) {
-        openPopup(fullSizeCard);
-        fullSizeCardImage.setAttribute('src', url);
-        fullSizeCardImage.setAttribute('alt', name);
-        fullSizeCardText.textContent = name;
-    })
-    return cardElement;
-}
+
+// Создание новых переменных валидации формы
+const enableValidationEditProfile = new FormValidator(configFormSelector, 'popup__case_type_edit-profile');
+const enableValidationAddCard = new FormValidator(configFormSelector, 'popup__case_type_add-card');
+
+// Включение валидации для отдельных секций
+enableValidationEditProfile.enableValidation()
+enableValidationAddCard.enableValidation()
+
 
 function cardAddForm(evt) { // Функция добавления карточки на страницу
     evt.preventDefault();
-    url = popupAddCardUrl.value;
-    cardName = popupAddCardName.value;
-    newCard = createCard(url, cardName)
-    cardsArea.prepend(newCard);
+    const url = popupAddCardUrl.value;
+    const cardName = popupAddCardName.value;
+    const firstCard = new Card(url, cardName, 'card');
+    const newCard = firstCard.returnCard()
+    cardsArea.prepend(newCard)
     popupAddCardName.value = '';
     popupAddCardUrl.value = '';
     popopAddCardSubmitButton.setAttribute('disabled', '');
@@ -66,8 +61,10 @@ function cardAddForm(evt) { // Функция добавления карточ�
 for (let i = 0; i < initialCards.length; i++) { //Цикл изначального добавления карточек на страницу
     const url = initialCards[i].link;
     const cardName = initialCards[i].name;
-    newCard = createCard(url, cardName);
-    cardsArea.prepend(newCard);
+    const firstCard = new Card(url, cardName, 'card');
+    const newCard = firstCard.returnCard()
+    cardsArea.prepend(newCard)
+    
 }
 
 function openPopup(popupName) { //Функция открытия Попапа
@@ -101,7 +98,7 @@ function addEscListner() { // Функция добавления слушате
 
 function createListnerEsc(evt) { // Функция которая отслеживает нажатие на кнопку 'ESC'
     if (evt.key === 'Escape') {
-        openedPopup = document.querySelector('.popup_opened');
+        const openedPopup = document.querySelector('.popup_opened');
         closePopup(openedPopup);
     };
 }
