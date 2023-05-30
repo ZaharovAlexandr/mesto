@@ -7,6 +7,8 @@ class FormValidator { //Класс для проверки валидции фо
         this._inputErrorClass = config.inputErrorClass;
         this._errorClass = config.errorClass;
         this._formTemplate = formTemplate;
+        this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+        this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
     }
 
     _showInputError(formElement, inputElement, errorMessage) { //Функция для вывода поля ошибки
@@ -38,10 +40,6 @@ class FormValidator { //Класс для проверки валидции фо
     };
 
     _setEventListeners() { // Функия добавления слушателя
-        // Массив форм и кнопок
-        this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-        this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-
         this._toggleButtonState(this._inputList, this._buttonElement);
         this._inputList.forEach((inputElement) => { // Цикл для наложения слушателя на каждый элемент
             inputElement.addEventListener('input', () => {
