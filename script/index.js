@@ -32,8 +32,6 @@ const fullSizeCardCloseButton = fullSizeCard.querySelector('.popup__close-button
 
 // элемент секции с карточками
 const cardsArea = document.querySelector('.cards');
-const cardTemplate = document.querySelector('#card').content;
-
 
 // Создание новых переменных валидации формы
 const enableValidationEditProfile = new FormValidator(configFormSelector, 'popup__case_type_edit-profile');
@@ -48,9 +46,7 @@ function cardAddForm(evt) { // Функция добавления карточ�
     evt.preventDefault();
     const url = popupAddCardUrl.value;
     const cardName = popupAddCardName.value;
-    const firstCard = new Card(url, cardName, 'card');
-    const newCard = firstCard.returnCard()
-    cardsArea.prepend(newCard)
+    cardsArea.prepend(createCard(url, cardName, 'card'));
     popupAddCardName.value = '';
     popupAddCardUrl.value = '';
     popopAddCardSubmitButton.setAttribute('disabled', '');
@@ -58,14 +54,16 @@ function cardAddForm(evt) { // Функция добавления карточ�
     closePopup(popupAddCard);
 }
 
-for (let i = 0; i < initialCards.length; i++) { //Цикл изначального добавления карточек на страницу
-    const url = initialCards[i].link;
-    const cardName = initialCards[i].name;
-    const firstCard = new Card(url, cardName, 'card');
-    const newCard = firstCard.returnCard()
-    cardsArea.prepend(newCard)
-    
+function createCard (url, name, temple) { // Функция для создания карточки
+    const newCard = new Card(url, name, temple)
+    return newCard._createCardClone()
 }
+
+initialCards.forEach(function(item){ // Цикл первоначального добавления карточек на страницу
+    const url = item.link;
+    const cardName = item.name;
+    cardsArea.prepend(createCard(url, cardName, 'card'));
+})
 
 function openPopup(popupName) { //Функция открытия Попапа
     popupName.classList.add('popup_opened');
@@ -87,7 +85,6 @@ function handleProfileFormSubmit(evt) { // Функция отправки фо�
     evt.preventDefault();
     profileName.textContent = popupEditProfileName.value;
     profileJob.textContent = popupEditProfileJob.value;
-    popupEditProfileName.value = '';
     popupEditProfileJob.value = '';
     closePopup(popupEditProfile);
 }
@@ -104,7 +101,6 @@ function createListnerEsc(evt) { // Функция которая отслежи
 }
 
 function removeEscListner() { // Функция добавления слушателя на закрытие попапа на кнопку 'ESC' removeEscListner
-    console.log('hello');
     document.removeEventListener('keydown', createListnerEsc);
 }
 
@@ -147,6 +143,8 @@ fullSizeCard.addEventListener('click', (evt) => { // Слушатель закр
         closePopup(fullSizeCard);
     }
 });
+
+export { openPopup, fullSizeCard, fullSizeCardImage, fullSizeCardText }
 
 
 

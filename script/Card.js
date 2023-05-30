@@ -1,10 +1,13 @@
-export {Card}
+import {openPopup, fullSizeCard, fullSizeCardImage, fullSizeCardText} from './index.js'
 
 class Card {
     constructor(link, name, template) {
         this._link = link;
         this._name = name;
         this._template = template;
+        this._cardElement = document.querySelector(`#${this._template}`).content.querySelector(`.${this._template}`).cloneNode(true);
+        this._cardElementImage = this._cardElement.querySelector('.card__image');
+        this._cardElementTitle = this._cardElement.querySelector('.card__title');
     }
 
     _setEventListner(cardElement) {
@@ -15,10 +18,7 @@ class Card {
             cardElement.remove();
         })
         cardElement.querySelector('.card__image').addEventListener('click', function (evt) {
-            const fullSizeCard = document.querySelector('.popup_type_full-size-card');
-            fullSizeCard.classList.add('popup_opened');
-            const fullSizeCardImage = fullSizeCard.querySelector('.popup__full-size-card');
-            const fullSizeCardText = fullSizeCard.querySelector('.popup__paragraph');
+            openPopup(fullSizeCard);
             fullSizeCardImage.setAttribute('src', cardElement.querySelector('.card__image').src);
             fullSizeCardImage.setAttribute('alt', cardElement.querySelector('.card__title').textContent);
             fullSizeCardText.textContent = cardElement.querySelector('.card__title').textContent;
@@ -26,15 +26,12 @@ class Card {
     }
 
     _createCardClone() {
-        const cardElement = document.querySelector(`#${this._template}`).content.querySelector(`.${this._template}`).cloneNode(true);
-        this._setEventListner(cardElement);
-        cardElement.querySelector('.card__image').src = this._link;
-        cardElement.querySelector('.card__image').alt = this._name;
-        cardElement.querySelector('.card__title').textContent = this._name;
-        return cardElement;
-    }
-
-    returnCard() {
-        return this._createCardClone();
+        this._setEventListner(this._cardElement);
+        this._cardElementImage.src = this._link;
+        this._cardElementImage.alt = this._name;
+        this._cardElementTitle.textContent = this._name;
+        return this._cardElement;
     }
 }
+
+export {Card}

@@ -1,7 +1,6 @@
-export {FormValidator}
-
 class FormValidator { //Класс для проверки валидции формы
     constructor(config, formTemplate) {
+        this._formElement = document.querySelector(`.${formTemplate}`)
         this._inputSelector = config.inputSelector;
         this._submitButtonSelector = config.submitButtonSelector;
         this._inactiveButtonClass = config.inactiveButtonClass;
@@ -38,16 +37,16 @@ class FormValidator { //Класс для проверки валидции фо
         }
     };
 
-    _setEventListeners(formElement) { // Функия добавления слушателя
+    _setEventListeners() { // Функия добавления слушателя
         // Массив форм и кнопок
-        const inputList = Array.from(formElement.querySelectorAll(this._inputSelector));
-        const buttonElement = formElement.querySelector(this._submitButtonSelector);
+        this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+        this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
 
-        this._toggleButtonState(inputList, buttonElement);
-        inputList.forEach((inputElement) => { // Цикл для наложения слушателя на каждый элемент
+        this._toggleButtonState(this._inputList, this._buttonElement);
+        this._inputList.forEach((inputElement) => { // Цикл для наложения слушателя на каждый элемент
             inputElement.addEventListener('input', () => {
-                this._toggleButtonState(inputList, buttonElement);
-                this._isValid(formElement, inputElement)
+                this._toggleButtonState(this._inputList, this._buttonElement);
+                this._isValid(this._formElement, inputElement)
             });
         });
     };
@@ -69,9 +68,10 @@ class FormValidator { //Класс для проверки валидции фо
     };
 
     enableValidation() { // Публичная функция включения валидации
-        const formElement = document.querySelector(`.${this._formTemplate}`)
-        this._setEventListeners(formElement);
+        this._setEventListeners();
     }
 }
+
+export {FormValidator}
 
 
