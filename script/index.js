@@ -34,8 +34,8 @@ const fullSizeCardCloseButton = fullSizeCard.querySelector('.popup__close-button
 const cardsArea = document.querySelector('.cards');
 
 // Создание новых переменных валидации формы
-const enableValidationEditProfile = new FormValidator(configFormSelector, 'popup__case_type_edit-profile');
-const enableValidationAddCard = new FormValidator(configFormSelector, 'popup__case_type_add-card');
+const enableValidationEditProfile = new FormValidator(configFormSelector, popupEditProfileFormElement);
+const enableValidationAddCard = new FormValidator(configFormSelector, popupAddCardFormElement);
 
 // Включение валидации для отдельных секций
 enableValidationEditProfile.enableValidation()
@@ -49,14 +49,13 @@ function cardAddForm(evt) { // Функция добавления карточ�
     cardsArea.prepend(createCard(url, cardName, 'card'));
     popupAddCardName.value = '';
     popupAddCardUrl.value = '';
-    popopAddCardSubmitButton.setAttribute('disabled', '');
-    popopAddCardSubmitButton.classList.add('popup__submit-button_type_disable');
+    enableValidationAddCard.disableValidationButton();
     closePopup(popupAddCard);
 }
 
 function createCard (url, name, temple) { // Функция для создания карточки
     const newCard = new Card(url, name, temple)
-    return newCard._createCardClone()
+    return newCard.createCardClone()
 }
 
 initialCards.forEach(function(item){ // Цикл первоначального добавления карточек на страницу
@@ -85,7 +84,6 @@ function handleProfileFormSubmit(evt) { // Функция отправки фо�
     evt.preventDefault();
     profileName.textContent = popupEditProfileName.value;
     profileJob.textContent = popupEditProfileJob.value;
-    popupEditProfileJob.value = '';
     closePopup(popupEditProfile);
 }
 

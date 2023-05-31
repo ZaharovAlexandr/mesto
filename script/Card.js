@@ -17,15 +17,15 @@ class Card {
         cardElement.querySelector('.card__remove').addEventListener('click', function (evt) {
             cardElement.remove();
         })
-        cardElement.querySelector('.card__image').addEventListener('click', function (evt) {
+        this._cardElementImage.addEventListener("click", () => {
             openPopup(fullSizeCard);
-            fullSizeCardImage.setAttribute('src', cardElement.querySelector('.card__image').src);
-            fullSizeCardImage.setAttribute('alt', cardElement.querySelector('.card__title').textContent);
-            fullSizeCardText.textContent = cardElement.querySelector('.card__title').textContent;
-        })
+            fullSizeCardImage.setAttribute("src", this._link);
+            fullSizeCardImage.setAttribute("alt", this._name);
+            fullSizeCardText.textContent = this._name;
+          });
     }
 
-    _createCardClone() {
+    createCardClone() {
         this._setEventListner(this._cardElement);
         this._cardElementImage.src = this._link;
         this._cardElementImage.alt = this._name;

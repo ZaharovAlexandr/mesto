@@ -1,6 +1,6 @@
 class FormValidator { //Класс для проверки валидции формы
     constructor(config, formTemplate) {
-        this._formElement = document.querySelector(`.${formTemplate}`)
+        this._formElement = formTemplate;
         this._inputSelector = config.inputSelector;
         this._submitButtonSelector = config.submitButtonSelector;
         this._inactiveButtonClass = config.inactiveButtonClass;
@@ -55,7 +55,7 @@ class FormValidator { //Класс для проверки валидции фо
         })
     };
 
-    _toggleButtonState(inputList, buttonElement, config) { // Функция смены кнопки
+    _toggleButtonState(inputList, buttonElement) { // Функция смены кнопки
         if (this._hasInvalidInput(inputList)) {
             buttonElement.classList.add(this._inactiveButtonClass);
             buttonElement.setAttribute('disabled', '');
@@ -67,6 +67,11 @@ class FormValidator { //Класс для проверки валидции фо
 
     enableValidation() { // Публичная функция включения валидации
         this._setEventListeners();
+    }
+
+    disableValidationButton () {
+        this._buttonElement.classList.add(this._inactiveButtonClass);
+        this._buttonElement.setAttribute('disabled', '');
     }
 }
 
