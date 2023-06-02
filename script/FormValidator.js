@@ -57,8 +57,7 @@ class FormValidator { //Класс для проверки валидции фо
 
     _toggleButtonState(inputList, buttonElement) { // Функция смены кнопки
         if (this._hasInvalidInput(inputList)) {
-            buttonElement.classList.add(this._inactiveButtonClass);
-            buttonElement.setAttribute('disabled', '');
+            this.disableValidationButton()
         } else {
             buttonElement.classList.remove(this._inactiveButtonClass);
             buttonElement.removeAttribute('disabled');
